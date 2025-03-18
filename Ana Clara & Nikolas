@@ -1,0 +1,151 @@
+from IPython.display import display, HTML
+
+html_code = """
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Interativo de Casamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #f5a623;
+            color: white;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        .button {
+            background-color: #f5a623;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #d88a17;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-field {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .quiz-option {
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #f5a623;
+            color: white;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Convite de Casamento - [Seus Nomes]</h1>
+    <p>Estamos tão felizes em compartilhar esse momento com você!</p>
+</header>
+
+<div class="section">
+    <h2>Confirme Sua Presença!</h2>
+    <button class="button" onclick="confirmPresence()">Confirmar Presença</button>
+    <p id="confirmationMessage"></p>
+</div>
+
+<div class="section">
+    <h2>Você Nos Conhece Bem? Participe do Quiz!</h2>
+    <button class="button" onclick="startQuiz()">Iniciar Quiz</button>
+    <div id="quiz" style="display:none;">
+        <p class="quiz-option">Qual é a nossa música favorita?</p>
+        <button class="quiz-option" onclick="checkAnswer('a')">A. Música 1</button>
+        <button class="quiz-option" onclick="checkAnswer('b')">B. Música 2</button>
+        <button class="quiz-option" onclick="checkAnswer('c')">C. Música 3</button>
+        <p id="quizResult"></p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Deixe Uma Mensagem Especial</h2>
+    <div class="form-container">
+        <input class="input-field" type="text" id="message" placeholder="Escreva sua mensagem aqui...">
+        <button class="button" onclick="submitMessage()">Enviar Mensagem</button>
+        <p id="messageResponse"></p>
+    </div>
+</div>
+
+<footer>
+    <p>Nos vemos no grande dia!</p>
+    <p>Para mais informações, acesse o nosso site de casamento.</p>
+</footer>
+
+<script>
+    // Função para confirmar presença
+    function confirmPresence() {
+        document.getElementById('confirmationMessage').innerText = "Obrigado por confirmar sua presença! Estamos ansiosos para celebrar com você.";
+    }
+
+    // Função para iniciar o quiz
+    function startQuiz() {
+        document.getElementById('quiz').style.display = 'block';
+    }
+
+    // Função para verificar resposta do quiz
+    function checkAnswer(answer) {
+        const correctAnswer = 'b'; // Resposta correta
+        const result = (answer === correctAnswer) ? "Resposta correta!" : "Resposta errada, tente novamente!";
+        document.getElementById('quizResult').innerText = result;
+    }
+
+    // Função para enviar mensagem
+    function submitMessage() {
+        const message = document.getElementById('message').value;
+        if (message) {
+            document.getElementById('messageResponse').innerText = "Obrigado pela sua mensagem! Vamos guardar com muito carinho.";
+        } else {
+            document.getElementById('messageResponse').innerText = "Por favor, escreva algo antes de enviar.";
+        }
+    }
+</script>
+
+</body>
+</html>
+"""
+
+# Exibir o código HTML no Google Colab
+display(HTML(html_code))
